@@ -14,9 +14,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -103,5 +100,25 @@ body section form .err {
   font-size: 0.85rem;
   margin-top: 0.2rem;
   max-width: 20rem;
+}
+
+.gallery {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.gallery .gallery-column {
+  width: 20rem;
+}
+
+.gallery .gallery-column .img-wrap {
+  margin-top: 1rem;
+}
+
+.gallery .gallery-column .img-wrap img {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

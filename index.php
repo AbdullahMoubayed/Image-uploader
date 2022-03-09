@@ -112,7 +112,7 @@ if(isset($_POST["submit"])) {
   }
   
   // Check file size
-  if ($_FILES["fileToUpload"]["size"] > 2000000) {
+  if ($_FILES["fileToUpload"]["size"] > 90000000) {
     $err["file"] =  "Sorry, your file is too large.";
     $uploadOk = 0;
   }
@@ -148,4 +148,8 @@ if(isset($_POST["submit"])) {
     }
   }
 }
+
+// ---------------------------------- List images -----------------------------------
+
+
 ?>

@@ -22,7 +22,6 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #fff0e5;
 
@@ -87,6 +86,26 @@ body{
         font-size: 0.85rem;
         margin-top: 0.2rem;
         max-width: 20rem;
+      }
+    }
+
+  }
+  
+}
+
+.gallery{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+
+  .gallery-column{
+    width: 20rem;
+
+    .img-wrap{
+      margin-top: 1rem;
+
+      img{
+        width: 100%;
       }
     }
   }
