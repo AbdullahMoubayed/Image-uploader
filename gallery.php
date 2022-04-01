@@ -1,13 +1,14 @@
 <?php
 require('php/config.php');
 
+// The connection an the usual staff
 $sql = "SELECT id, image_name, thumbnail_name, description FROM images";
+// Saving database results
 $result = mysqli_query($link, $sql);
+// Here I created an array to save all the data, It is easier for me to handle that data then in more flixable way.
 $data = array();
-$img_cul1 = array();
-$img_cul2 = array();
-$img_cul3 = array();
 
+// Lopping through all the results and converting them to array and pushing them to my data array
 if (mysqli_num_rows($result) > 0) {
   $row = mysqli_fetch_assoc($result);
   
@@ -15,23 +16,10 @@ if (mysqli_num_rows($result) > 0) {
     array_push($data, $row);
   }
 
-  if(count($data) >= 3) {
-    $length = round(count($data) / 3);
+  // Spletting my array to three parts so I can show the imgs in the columns
+  $data = array_chunk($data, (ceil(count($data)/3)));
 
-    for($i = 0; $i <= $length; $i++) {
-      array_push($img_cul1, $data[$i]);
-    }
-
-    for($i = $length; $i <= ($length*2); $i++) {
-      array_push($img_cul2, $data[$i]);
-    }
-
-    for($i = ($length*2); $i <= ($length*3); $i++) {
-      array_push($img_cul3, $data[$i]);
-    }
-  }
-
-  // output data of each row
+// If there are no results
 } else {
   echo "0 results";
 }
@@ -55,60 +43,29 @@ mysqli_close($link);
 <section>
   <h1>Upload an image</h1>
 
+  <a href="gallery.php"><input type="button" value="Uploade An Image" /></a>
+
   <div class="gallery">
 
-  <!-- -------------- cloumn 1 -------------- -->
+    <?php
+    // Lopping through my data array and on each time the item is called culomn, My main array incoudes is splett to three parts and each part is an array, again to show my imgs in three different culomns
+    foreach ($data as $culomn) {
+    ?>
     <div class="gallery-column">
       <?php
-      if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        for($i = 0; $i <= $length; $i++) {
-
-          echo "<div class='img-wrap'>
-            <img src='uploads/". $img_cul1[$i]["image_name"] . "' alt='". $img_cul1[$i]["description"] ."'>
-            </div>";
-
-        }
-      } else {
-        echo "0 results";
+      // Loppin through my array inside main aray, that aray inclouds my imgs
+      foreach ($culomn as $img) {
+        echo "<div class='img-wrap'>
+                <img src='uploads/". $img["image_name"] . "' alt='". $img["description"] ."'>
+              </div>";
       }
       ?>
+
     </div>
 
-    <!-- -------------- cloumn 2 -------------- -->
-    <div class="gallery-column">
-      <?php
-      if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        for($i = ($length-1); $i <= (($length*2)-1); $i++) {
-
-          echo "<div class='img-wrap'>
-            <img src='uploads/". $img_cul1[$i]["image_name"] . "' alt='". $img_cul1[$i]["description"] ."'>
-            </div>";
-
-        }
-      } else {
-        echo "0 results";
-      }
-      ?>                    
-    </div>
-    <!-- -------------- cloumn 3 -------------- -->
-    <div class="gallery-column">
-      <?php
-      if (mysqli_num_rows($result) > 0) {
-        // output data of each row
-        for($i = (($length*2)-1); $i <= (($length*3)-1); $i++) {
-
-          echo "<div class='img-wrap'>
-            <img src='uploads/". $img_cul1[$i]["image_name"] . "' alt='". $img_cul1[$i]["description"] ."'>
-            </div>";
-
-        }
-      } else {
-        echo "0 results";
-      }
-      ?>
-    </div>
+    <?php
+    }
+    ?>
 
   </div>
 

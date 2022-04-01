@@ -74,7 +74,7 @@ body section form input {
   outline: none !important;
 }
 
-body section form input[type="submit"] {
+body section form input[type="submit"], body section form input[type="button"] {
   max-width: 9.5rem;
   margin-top: 1.5rem;
   background-color: #3a10e5;
@@ -120,5 +120,18 @@ body section form .err {
 
 .gallery .gallery-column .img-wrap img {
   width: 100%;
+}
+
+input[type="button"] {
+  padding: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1rem;
+  background-color: #3a10e5;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

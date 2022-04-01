@@ -26,6 +26,7 @@
     <div class="err" id="comment-err">Only letters and digits is allowed</div>
     
     <input type="submit" value="Upload Image" name="submit" >
+    <a href="gallery.php"><input type="button" value="Go To Gallery"></a>
   </form>
 
 </section>
